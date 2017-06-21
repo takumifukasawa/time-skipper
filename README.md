@@ -1,14 +1,20 @@
-# javascript-starter
+# time-skipper
 
-## インストール
+## 使い方
 
-```
-$ yarn (or $ npm install)
-```
+```javascript
 
-## 開発手順
+// pass func and fps
+const timeSkipper = new TimeSkipper(func, 10);
+requestAnimationFrame(tick);
 
-```
-// watchifyでのjavascriptビルドと簡易サーバー（browser-sync）を立ち上げる
-$ yarn start (or $ npm start)
+// 10fpsで実行される
+function func(time, delta) {
+  console.log(time, delta);
+}
+
+function tick(time) {
+  timeSkipper.exec(time);
+  requestAnimationFrame(tick);
+}
 ```
